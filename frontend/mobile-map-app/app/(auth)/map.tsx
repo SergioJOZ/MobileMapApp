@@ -41,7 +41,7 @@ export default function map() {
           <MapViewDirections
             origin={origin}
             destination={destination}
-            apikey="AIzaSyCR5r_fMK-wrQjIfg7PLt3CsETUDdYHKdk"
+            apikey=""
           />
         </MapView>
       )}

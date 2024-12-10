@@ -20,7 +20,7 @@
         "bundleIdentifier": "com.mobilemapapp.firebase"
       },
       "googleServicesFile": "./google-services.json",
-      "googleMaps": { "apiKey": "AIzaSyCR5r_fMK-wrQjIfg7PLt3CsETUDdYHKdk" },
+      "googleMaps": { "apiKey": "" },
       "package": "com.mobilemapapp.firebase"
     },
     "web": {
