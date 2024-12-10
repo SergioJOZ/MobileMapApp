@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import auth from "@react-native-firebase/auth";
 import { FirebaseError } from "firebase/app";
+import axios from "axios";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -21,12 +22,22 @@ export default function RegisterPage() {
     setLoading(true);
     try {
       await auth().createUserWithEmailAndPassword(email, password);
-      alert("Check your emails!");
     } catch (e: any) {
       const err = e as FirebaseError;
       alert("Registration failed: " + err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const createUserInDatabase = async () => {
+    try {
+      const user = await axios.post("http://localhost:4000/users", {
+        realname: name,
+        email: email,
+      });
+    } catch (e: any) {
+      console.log(e);
     }
   };
 
@@ -69,7 +80,16 @@ export default function RegisterPage() {
 
           <Pressable
             className="bg-orange-400 rounded-md py-4 mt-4"
-            onPress={signUp}
+            disabled={
+              email === "" ||
+              name === "" ||
+              password === "" ||
+              (confirmPassword === "" && password === confirmPassword)
+            }
+            onPress={() => {
+              createUserInDatabase();
+              signUp();
+            }}
           >
             <Text className="text-center text-white">Registrarme</Text>
           </Pressable>

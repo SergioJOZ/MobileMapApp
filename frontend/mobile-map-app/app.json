@@ -20,6 +20,7 @@
         "bundleIdentifier": "com.mobilemapapp.firebase"
       },
       "googleServicesFile": "./google-services.json",
+      "googleMaps": { "apiKey": "AIzaSyCR5r_fMK-wrQjIfg7PLt3CsETUDdYHKdk" },
       "package": "com.mobilemapapp.firebase"
     },
     "web": {
@@ -48,7 +49,13 @@
       ],
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
-      "@react-native-google-signin/google-signin"
+      "@react-native-google-signin/google-signin",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Permite a la aplicacion acceder a tu ubicacion."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
